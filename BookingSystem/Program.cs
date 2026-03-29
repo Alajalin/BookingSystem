@@ -55,7 +55,7 @@ namespace BookingSystem
 			builder.Services.AddScoped<BookingService>();
 
 			builder.Services.AddHttpContextAccessor();
-			builder.Services.AddSingleton<IAuthorizationHandler, AssignedDoctorHandler>();
+			
 
 			builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 				.AddJwtBearer(options =>
@@ -83,8 +83,18 @@ namespace BookingSystem
 				options.AddPolicy("AssignedDoctorOnly", policy =>
 					policy.Requirements.Add(new AssignedDoctorRequirement()));
 			});
-
+			builder.Services.AddScoped<IAuthorizationHandler, AssignedDoctorHandler>();
+			builder.Services.AddCors(options =>
+			{
+				options.AddPolicy("AllowAngular", policy =>
+				{
+					policy.WithOrigins("http://localhost:4200")
+						  .AllowAnyHeader()
+						  .AllowAnyMethod();
+				});
+			});
 			var app = builder.Build();
+			app.UseCors("AllowAngular");
 			app.UseSwagger();
 			app.UseSwaggerUI();
 

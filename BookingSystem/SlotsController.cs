@@ -14,7 +14,7 @@ namespace BookingSystem.Controllers
 			_service = service;
 		}
 
-		[Authorize(Roles = "User,Admin")]
+		[AllowAnonymous]
 		[HttpGet("available")]
 		public async Task<IActionResult> GetAvailable()
 		{
