@@ -1,0 +1,225 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #111;
+  min-height: 100vh;
+  padding: 0 40px 60px;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #555;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  color: #1976f3;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #555;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.welcome-user {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.nav-btn,
+.hero-btn,
+.slot-card button,
+.retry-btn {
+  background: #1976f3;
+  color: white;
+  border: none;
+  border-radius: 28px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.logout-btn {
+  background: #e53935;
+}
+
+.retry-btn {
+  margin-top: 10px;
+}
+
+.hero {
+  max-width: 1200px;
+  margin: 20px auto 70px;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-text {
+  max-width: 650px;
+}
+
+.small-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #666;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: 58px;
+  line-height: 1.05;
+  margin: 0 0 18px;
+}
+
+.hero h1 span {
+  color: #1976f3;
+}
+
+.hero-desc {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.slots-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-subtitle {
+  color: #7fa9e8;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.slots-section h2 {
+  font-size: 36px;
+  margin-bottom: 35px;
+}
+
+.empty-state {
+  background: #f5f7fb;
+  border: 1px solid #e5ebf5;
+  border-radius: 16px;
+  padding: 32px;
+  color: #666;
+  font-size: 16px;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.slot-card {
+  background: #fff;
+  border: 1px solid #e6edf7;
+  border-radius: 18px;
+  padding: 24px;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.slot-card h3 {
+  color: #1976f3;
+  margin: 0 0 14px;
+  font-size: 22px;
+}
+
+.slot-card p {
+  color: #444;
+  margin: 8px 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.slot-card button {
+  width: 100%;
+  margin-top: 16px;
+}
+
+@media (max-width: 992px) {
+  .slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    gap: 16px;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 0 20px 40px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .slots-grid {
+    grid-template-columns: 1fr;
+  }
+}

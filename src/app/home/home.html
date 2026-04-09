@@ -1,21 +1,69 @@
-<h2 style="text-align:center;">Available Slots</h2>
+<div class="page">
+  <header class="navbar">
+    <div class="logo">T2 HEALTH CARE</div>
 
-<div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+    <nav class="nav-links">
+      <button class="link-btn" type="button" (click)="loadSlots()">Available Slots</button>
+    </nav>
 
-  <div *ngFor="let slot of slots"
-       style="border:1px solid #ddd; border-radius:10px; padding:15px; width:250px; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+    <div class="nav-actions">
+      <span class="welcome-user" *ngIf="isLoggedIn()">Hi, {{ username }}</span>
 
-    <h3 style="margin:0; color:#2c3e50;">{{ slot.doctorName }}</h3>
+      <button class="nav-btn" *ngIf="!isLoggedIn()" (click)="router.navigate(['/login'])">
+        Login
+      </button>
 
-    <p><strong>Date:</strong> {{ slot.slotDate | date:'yyyy-MM-dd' }}</p>
-    <p><strong>Time:</strong> {{ slot.startTime }} - {{ slot.endTime }}</p>
+      <button class="nav-btn logout-btn" *ngIf="isLoggedIn()" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </header>
 
-    <button 
-      (click)="book(slot.id)"
-      style="width:100%; padding:8px; background:#3498db; color:white; border:none; border-radius:5px; cursor:pointer;">
-      Book
-    </button>
+  <section class="hero">
+    <div class="hero-text">
+      <p class="small-title">SMART APPOINTMENT BOOKING</p>
+      <h1>Welcome to <span>T2 Health Care</span></h1>
+      <p class="hero-desc">
+        Check available appointments and choose the time that suits you.
+      </p>
 
-  </div>
+      <button class="hero-btn" type="button" (click)="loadSlots()">
+        View Slots
+      </button>
+    </div>
+  </section>
 
+  <section class="slots-section" id="slots">
+    <p class="section-subtitle">AVAILABLE SLOTS</p>
+    <h2>Choose Your Appointment</h2>
+
+    <div class="empty-state" *ngIf="loading && slots.length === 0">
+  Loading appointments...
+</div>
+
+<div class="empty-state" *ngIf="!loading && errorMessage">
+  {{ errorMessage }}
+  <br /><br />
+  <button class="retry-btn" type="button" (click)="loadSlots()">Retry</button>
+</div>
+
+<div class="empty-state" *ngIf="!loading && !errorMessage && slots.length === 0">
+  No available appointments right now.
+</div>
+
+<div class="slots-grid" *ngIf="slots.length > 0">
+      <div class="slot-card" *ngFor="let slot of slots">
+        <h3>{{ slot.doctorName || 'Doctor' }}</h3>
+        <p><strong>Date:</strong> {{ slot.slotDate | date:'yyyy-MM-dd' }}</p>
+        <p><strong>Time:</strong> {{ slot.startTime }} - {{ slot.endTime }}</p>
+
+        <button
+          type="button"
+          (click)="book(slot.id)"
+          [disabled]="bookingLoadingId === slot.id">
+          {{ bookingLoadingId === slot.id ? 'Booking...' : 'Book' }}
+        </button>
+      </div>
+    </div>
+  </section>
 </div>

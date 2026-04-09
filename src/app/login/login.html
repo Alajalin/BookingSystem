@@ -1,23 +1,49 @@
-<h2>Login</h2>
+<div class="login-page">
+  <div class="login-card">
+    <div class="brand">T2 HEALTH CARE</div>
 
-<input
-  type="text"
-  [(ngModel)]="username"
-  name="username"
-  placeholder="Enter username"
-/>
+    <p class="small-title">WELCOME BACK</p>
+    <h1>Login to Your Account</h1>
+    <p class="desc">
+      Enter your username and password to continue and book your appointment.
+    </p>
 
-<br><br>
+    <form (ngSubmit)="onLogin()" class="login-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          name="username"
+          [(ngModel)]="username"
+          placeholder="Enter your username"
+          required
+        />
+      </div>
 
-<input
-  type="password"
-  [(ngModel)]="password"
-  name="password"
-  placeholder="Enter password"
-/>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
 
-<br><br>
+      <div class="error-box" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
 
-<button (click)="login()">Login</button>
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+    </form>
 
-<p>{{ message }}</p>
+    <div class="back-link">
+      <a routerLink="/">Back to Home</a>
+    </div>
+  </div>
+</div>

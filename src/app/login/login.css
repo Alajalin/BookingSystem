@@ -1,8 +1,124 @@
-input {
-  width: 200px;
-  padding: 8px;
+* {
+  box-sizing: border-box;
 }
 
-button {
-  padding: 8px;
+.login-page {
+  min-height: 100vh;
+  background: #f7f9fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 36px 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.brand {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.small-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6f7d95;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.login-card h1 {
+  font-size: 34px;
+  margin: 0 0 12px;
+  text-align: center;
+  color: #111;
+}
+
+.desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #666;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.form-group input {
+  height: 48px;
+  border: 1px solid #dbe3f0;
+  border-radius: 12px;
+  padding: 0 14px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #1976f3;
+  box-shadow: 0 0 0 3px rgba(25, 118, 243, 0.12);
+}
+
+.error-box {
+  background: #fff1f1;
+  color: #c62828;
+  border: 1px solid #f2c5c5;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+.login-form button {
+  height: 50px;
+  border: none;
+  border-radius: 28px;
+  background: #1976f3;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.back-link {
+  margin-top: 22px;
+  text-align: center;
+}
+
+.back-link a {
+  text-decoration: none;
+  color: #1976f3;
+  font-size: 14px;
+  font-weight: 600;
 }
